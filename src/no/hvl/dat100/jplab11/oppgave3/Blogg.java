@@ -2,6 +2,7 @@ package no.hvl.dat100.jplab11.oppgave3;
 
 import no.hvl.dat100.jplab11.common.TODO;
 import no.hvl.dat100.jplab11.oppgave1.*;
+import no.hvl.dat100.jplab11.oppgave2.Bilde;
 
 public class Blogg {
 
@@ -19,11 +20,11 @@ public class Blogg {
 	}
 
 	public int getAntall() {
-		return nesteledig; 
+		return this.nesteledig; 
 	}
 	
 	public Innlegg[] getSamling() {
-		return innleggtabell;
+		return this.innleggtabell;
 
 	}
 	
@@ -54,27 +55,52 @@ public class Blogg {
 			return true;
 		} else {
 			return false;
-		}
+		}		
 	}
 
 	public boolean ledigPlass() {
-		throw new UnsupportedOperationException(TODO.method());
-
+		boolean ledig = false;
+		
+		for(int i = 0; i < innleggtabell.length; i++) {
+			if(innleggtabell[i] == null) {
+				ledig = true; 
+			}
+		}
+		
+		if (ledig == false) {
+			ledig = false; 
+		}
+		
+		return ledig; 
 	}
 	
 	public boolean leggTil(Innlegg innlegg) {
-
-		throw new UnsupportedOperationException(TODO.method());
+		boolean ny = finnInnlegg(innlegg) == -1;
+		
+		if(ny && nesteledig < innleggtabell.length) {
+			innleggtabell[nesteledig] = innlegg;
+			this.nesteledig++;
+			return true; 
+		} else {
+			return false; 
+		}
 	}
 	
 	public String toString() {
+		
 		throw new UnsupportedOperationException(TODO.method());
 	}
 
 	// valgfrie oppgaver nedenfor
 	
 	public void utvid() {
-		throw new UnsupportedOperationException(TODO.method());
+		Innlegg[] utvid = new Innlegg[innleggtabell.length*2];
+		
+		for(int i = 0; i < innleggtabell.length; i++) {
+			utvid[i] = innleggtabell[i];
+		}
+		
+		innleggtabell = utvid;
 	}
 	
 	public boolean leggTilUtvid(Innlegg innlegg) {
@@ -85,7 +111,16 @@ public class Blogg {
 	
 	public boolean slett(Innlegg innlegg) {
 		
-		throw new UnsupportedOperationException(TODO.method());
+		int pos = finnInnlegg(innlegg);
+		
+		if(pos >= 0) {
+			nesteledig--;
+			innleggtabell[pos] = innleggtabell[nesteledig];
+			innleggtabell[nesteledig] = null;
+			return true; 
+		}
+		
+		return false;
 	}
 	
 	public int[] search(String keyword) {

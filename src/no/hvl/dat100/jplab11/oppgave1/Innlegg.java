@@ -4,10 +4,10 @@ import no.hvl.dat100.jplab11.common.TODO;
 
 public abstract class Innlegg {
 	
-	private int id; 
-	private String bruker; 
-	private String dato; 
-	private int likes; 
+	protected int id; 
+	protected String bruker; 
+	protected String dato; 
+	protected int likes; 
 	
 	public Innlegg() {
 		
@@ -82,7 +82,7 @@ public abstract class Innlegg {
 	@Override
 	public String toString() {
 		
-		return "1\n" + bruker + "\n" + dato + "\n" + likes + "\n";
+		return id + "\n" + bruker + "\n" + dato + "\n" + likes + "\n";
 				
 	}
 	
