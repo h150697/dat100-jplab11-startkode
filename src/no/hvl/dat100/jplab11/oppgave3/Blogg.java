@@ -5,32 +5,56 @@ import no.hvl.dat100.jplab11.oppgave1.*;
 
 public class Blogg {
 
-	// TODO: objektvariable 
+	private Innlegg[] innleggtabell;
+	private int nesteledig;
 
 	public Blogg() {
-		throw new UnsupportedOperationException(TODO.constructor("Blogg"));
+		innleggtabell = new Innlegg[20];
+		nesteledig = 0;
 	}
 
 	public Blogg(int lengde) {
-		throw new UnsupportedOperationException(TODO.constructor("Blogg"));
+		innleggtabell = new Innlegg[lengde];
+		nesteledig = 0;
 	}
 
 	public int getAntall() {
-		throw new UnsupportedOperationException(TODO.method());
+		return nesteledig; 
 	}
 	
 	public Innlegg[] getSamling() {
-		throw new UnsupportedOperationException(TODO.method());
+		return innleggtabell;
 
 	}
 	
 	public int finnInnlegg(Innlegg innlegg) {
-
-		throw new UnsupportedOperationException(TODO.method());
+		boolean funnet = false; 
+		
+		int pos = 0;
+		
+		while( pos < nesteledig && !funnet) {
+			if(innleggtabell[pos].erLik(innlegg)) {
+				funnet = true;
+			} else {
+				pos++;
+			}
+		}
+		
+		if(funnet) {
+			return pos;
+		} else {
+			return -1;
+		}
+		
 	}
 
 	public boolean finnes(Innlegg innlegg) {
-		throw new UnsupportedOperationException(TODO.method());
+		int pos = finnInnlegg(innlegg);
+		if(pos >= 0 ) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public boolean ledigPlass() {
