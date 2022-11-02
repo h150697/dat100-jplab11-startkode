@@ -17,7 +17,7 @@ public class Bilde extends Tekst {
 	}
 	
 	public String getUrl() {
-		return url; 
+		return this.url; 
 
 	}
 

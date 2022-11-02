@@ -2,7 +2,7 @@ package no.hvl.dat100.jplab11.oppgave3;
 
 import no.hvl.dat100.jplab11.common.TODO;
 import no.hvl.dat100.jplab11.oppgave1.*;
-import no.hvl.dat100.jplab11.oppgave2.Bilde;
+import no.hvl.dat100.jplab11.oppgave2.*;
 
 public class Blogg {
 
@@ -87,8 +87,14 @@ public class Blogg {
 	}
 	
 	public String toString() {
+
+		String svar = nesteledig + "\n";
+		for (int i = 0; i < nesteledig; i++) {
+			svar += innleggtabell[i].toString();
+		}
 		
-		throw new UnsupportedOperationException(TODO.method());
+		return svar;
+		
 	}
 
 	// valgfrie oppgaver nedenfor
