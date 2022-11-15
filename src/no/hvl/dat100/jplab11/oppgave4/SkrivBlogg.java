@@ -13,21 +13,19 @@ import no.hvl.dat100.jplab11.oppgave3.*;
 public class SkrivBlogg {
 
 	public static boolean skriv(Blogg samling, String mappe, String filnavn) {
-		PrintWriter skriver = null;
-		boolean ok = true; 
-		
-		do {
 		try {
-			skriver = new PrintWriter(mappe + filnavn);
+			File dir = new File (mappe);
+			File fil = new File(dir, filnavn);
+			PrintWriter skriver = new PrintWriter(fil);
+			
 			skriver.println(samling.toString());
+			
 			skriver.close();
+			
+			return true; 
+			
+		} catch (Exception e) {
+			return false; 
 		}
-		
-		catch(FileNotFoundException e) {
-			System.out.println("Katalogen finnes ikke.");
-			ok = false; 
-		}
-	}	while (!ok);
-		return ok;
 	}
 }
